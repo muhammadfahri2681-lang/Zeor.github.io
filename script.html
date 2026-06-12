@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zeor Hub - Get Script</title>
+    <style>
+        body { background-color: #0f172a; color: white; text-align: center; font-family: 'Segoe UI', sans-serif; padding-top: 50px; }
+        .logo-title { width: 85%; max-width: 500px; filter: drop-shadow(0 0 10px #3b82f6); margin-bottom: 20px; }
+        textarea { width: 80%; height: 100px; background: #1e293b; color: white; border: 2px solid #3b82f6; border-radius: 10px; padding: 10px; margin-bottom: 20px; }
+        .btn { 
+            display: inline-block; 
+            background-color: #3b82f6; 
+            color: white; 
+            padding: 15px 30px; 
+            border-radius: 50px; 
+            border: 2px solid #3b82f6; 
+            cursor: pointer; 
+            margin: 10px; 
+            font-weight: bold;
+            box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            box-shadow: 0 0 20px #3b82f6, 0 0 40px #3b82f6;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <img src="https://i.supaimg.com/209aa8f1-5582-4554-950b-777d0cbe2c0f/77f0e7ef-1271-4c21-b27d-01c7cc3a634e.png" class="logo-title">
+    <p>Success! Here is your script:</p>
+    
+    <textarea id="scriptBox" readonly>loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Gazer-FE-Animation-Editor-14508"))()</textarea>
+    <br>
+    <button class="btn" onclick="copyScript()">Copy Script</button>
+    <button class="btn" onclick="downloadScript()">Download .txt</button>
+
+    <script>
+        function copyScript() {
+            const text = document.getElementById("scriptBox");
+            text.select();
+            document.execCommand("copy");
+            alert("Script berhasil di-copy!");
+        }
+        function downloadScript() {
+            const text = document.getElementById("scriptBox").value;
+            const blob = new Blob([text], {type: "text/plain"});
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "ZeorHub_Script.txt";
+            a.click();
+        }
+    </script>
+</body>
+</html>
